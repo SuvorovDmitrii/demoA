@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}О нас{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <h1>Нужно распечатать диплом или документ? Тебе к нам!</h1>
+    </div>
+
+    <div class="carousel">
+        <h2>Наши продукты</h2>
+        {% for p in products %}
+        <div class="item">
+            <div class="product">
+                <div class="image"><img src="{{ p.image.url }}" alt="Image"></div>
+                <h3>{{ p.name }}</h3>
+            </div>
+         </div>
+        {% endfor %}
+    </div>
+<script>
+    let num = 0, $items = $('.carousel .item'); $($items.get(num)).fadeTo(500, 1);
+    setInterval(() => { $($items.get(num)).fadeOut(500, ()=>{ num = num + 1; if (num > 4) num = 0;
+            $($items.get(num)).fadeTo(500, 1);
+        });
+    }, 3000);
+</script>
+
+{% endblock %}
